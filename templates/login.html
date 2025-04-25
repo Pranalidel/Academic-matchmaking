@@ -1,0 +1,256 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link href="https://fonts.googleapis.com/css2?family=Overlock:wght@400;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+        <style>
+            body {
+                font-family: "Overlock", sans-serif;
+                background-color: #E5F8FF;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+            }
+            .container {
+                background: #E5F8FF;
+                padding:40px;
+                border-radius: 10px;
+                text-align: center;
+                width: 400px;
+                margin-top: 100px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .logo {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #0A2239;
+            margin-left: 10px;
+            }
+            .matchking {
+                position: absolute;  /* Position it absolutely */
+                top: 10px;           /* Add a small space from the top */
+                left: 30px;          
+                font-family: 'Overlock', sans-serif;
+                font-weight: bold;
+                /* line-height: 0.9; Reduce gap between lines */
+                display: flex;
+                align-items: center;
+                gap: 2px;
+            }
+
+            .big {
+                font-size: 3rem; /* Large size for "MA" */
+                color: #0E1E38; /* Dark blue */
+            }
+
+            .orange {
+                color: #FF4A00; /* Orange color for "A" */
+                margin-left: -2px;
+            }
+
+            .small-group {
+                display: flex;
+                flex-direction: column; /* Stack "tch" and "king" vertically */
+                line-height: 0.96; /* Reduce space between lines */
+            }
+
+            .small {
+                font-size: 1.3rem; /* Smaller text for "tch" and "king" */
+                color: #0E1E38; /* Dark blue */
+                display: inline-block;
+            }
+            .matchking .small-group .small:first-child { /* Target "tch" */
+                margin-left: -1.3px;  /* Adjust this value to move it slightly left */
+                margin-bottom: -1px;
+            }
+            .social-login {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+            .social-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                padding: 12px;
+                border-radius: 30px;
+                font-size: 14px;
+                font-weight: bold;
+                cursor: pointer;
+                border: 2px solid;
+                background: none;
+            }
+            .google-btn { 
+                border-color: #867f7f; 
+                color: #f1571a; 
+                background-color: white;
+                border-width: 1px;
+            }
+            .facebook-btn { 
+                border-color: #867f7f;
+                color: #5f72dd; 
+                background-color: white;
+                border-width: 1px;
+            }
+            .social-btn.facebook-btn img {
+                margin-right: 10px; /* Adjust the value to control the gap */
+            }
+            .social-btn.google-btn img {
+                margin-right: 5px; /* Adjust the value to control the gap */
+            }
+
+
+            .or {
+                margin: 15px 0;
+                color: #251d1db0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+            }
+
+            .or::before,
+            .or::after {
+                content: "";
+                flex: 1;
+                border-top: 1px solid #808080b0; /* Thin line on both sides */
+                margin: 0 10px; /* Space between the line and the text */
+            }
+
+            label {
+                display: block;
+                font-size: 14px;
+                color: #808080b0;
+                margin-bottom: 5px;
+                text-align: left;
+            }
+            input {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+                margin-bottom: 10px;
+                background-color: #E5F8FF;
+            }
+            .forgot {
+                display: block;
+                text-align: right;
+                font-size: 12px;
+                color: #251d1db0;
+                margin-bottom: 10px;
+                font-weight: 700;
+            }
+            .remember-me {
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+                margin-bottom: 15px;
+                margin-right: 290px;
+            }
+            .remember-me input[type="checkbox"] {
+                margin-right: 1px; /* Optional: Add some space between checkbox and text */
+            }
+            .remember-me label {
+                white-space: nowrap; /* Prevents wrapping of text */
+                color: #251d1db0;
+                font-weight: 700;
+    }
+            .login-btn {
+                width: 100%;
+                background: #808080b0;
+                color: white;
+                border: none;
+                padding: 12px;
+                font-size: 16px;
+                border-radius: 30px;
+                cursor: pointer;
+            }
+            .login-line {
+                width: 100%;
+                margin-top: 30px;
+                border-top: 1px solid #808080b0;
+                height: 0;
+            }
+            .signup-link {
+                text-align: center;
+                margin-top: 10px;
+                font-size: 14px;
+            }
+            .signup-link p {
+                font-size: 16px; /* Increase font size as needed */
+                color: #251d1db0; /* Adjust color if needed */
+                font-weight: 700;
+            }
+
+            .signup-btn {
+                border: 2px solid #808080b0;
+                background: none;
+                padding: 12px 200px;
+                border-radius: 30px;
+                font-size: 14px;
+                font-weight: bold;
+                cursor: pointer;
+                width: 100%; /* Make it fill the container horizontally */
+                white-space: nowrap; /* Prevent text from wrapping to the next line */
+                color: #808080b0;
+                display: inline-flex; /* Use flexbox for centering */
+                justify-content: center; /* Center the text horizontally */
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="matchking">
+            <span class="big">M</span><span class="big orange">A</span>
+            <div class="small-group">
+                <span class="small">tch</span>
+                <span class="small">king</span>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Log in</h2>
+            <div class="social-login">
+                <button class="social-btn google-btn">
+                    <img src="images/google_icon.png" alt="Google" width="20"> Continue with Google
+                </button>
+                <button class="social-btn facebook-btn">
+                    <img src="images/facebook_login.png" alt="Facebook" width="20"> Continue with Facebook
+                </button>
+                
+            </div>
+            <div class="or">OR</div>
+            <form>
+                <label>Email address or user name</label>
+                <input type="email" placeholder="Enter your email/username">
+                <label>Password</label>
+                <input type="password" placeholder="Enter your password">
+                <a href="#" class="forgot">Forget your password</a>
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe">
+                    <label for="rememberMe">Remember Me</label> 
+                </div>
+                <button type="submit" class="login-btn">Log in</button>
+                <div class="login-line"></div>
+            </form>
+            <div class="signup-link">
+                <p>Don’t have an account?</p>
+                <button class="signup-btn">Sign up</button>
+            </div>
+        </div>
+    </body>
+    </html>

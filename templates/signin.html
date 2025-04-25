@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Overlock:wght@400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #e6f7ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 500px;
+            width: 50%; /* Makes it responsive */
+            margin: 0 auto;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #0A2239;
+            margin-left: 10px;
+        }
+        .matchking {
+            font-family: 'Overlock', sans-serif;
+            font-weight: bold;
+            /* line-height: 0.9; Reduce gap between lines */
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .big {
+            font-size: 3rem; /* Large size for "MA" */
+            color: #0E1E38; /* Dark blue */
+        }
+
+        .orange {
+            color: #FF4A00; /* Orange color for "A" */
+            margin-left: -2px;
+        }
+
+        .small-group {
+            display: flex;
+            flex-direction: column; /* Stack "tch" and "king" vertically */
+            line-height: 0.96; /* Reduce space between lines */
+        }
+
+        .small {
+            font-size: 1.3rem; /* Smaller text for "tch" and "king" */
+            color: #0E1E38; /* Dark blue */
+            display: inline-block;
+        }
+        .matchking .small-group .small:first-child { /* Target "tch" */
+            margin-left: -1.3px;  /* Adjust this value to move it slightly left */
+            margin-bottom: -1px;
+        }
+        h2 {
+            margin-bottom: 10px;
+        }
+        .input-group {
+            text-align: left;
+            margin-bottom: 15px;
+            color: #808080b0;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .input-group input {
+            width: calc(100% - 20px); /* Adjusts width to leave space */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin: 0 auto; /* Centers the input */
+            display: block;
+        }
+        .btn {
+            width: 100%;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .or {
+            margin: 15px 0;
+        }
+        .social-login {
+            display: flex;
+            justify-content: space-between;
+        }
+        .social-btn.google-btn {
+            border: 2px solid #f1571a !important;
+            width: 40%;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #f1571a;
+            font-weight: bold;
+        }
+
+        .social-btn.facebook-btn {
+            border: 2px solid #5f72dd !important;
+            width: 40%;
+            padding: 15px;;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #5f72dd;
+            font-weight: bold;
+        }
+
+        .social-btn img {
+            width: 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <div class="matchking">
+            <span class="big">M</span><span class="big orange">A</span>
+            <div class="small-group">
+                <span class="small">tch</span>
+                <span class="small">king</span>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h2>Sign up with us</h2>
+        <p>Already have an account? <a href="#">Login</a></p>
+        
+        <form>
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="full name" placeholder="Enter your full name">
+            </div>
+            <div class="input-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="Enter your email address">
+            </div>
+            <div class="input-group">
+                <label>Username</label>
+                <input type="password" placeholder="Enter username">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" placeholder="Create your password">
+            </div>
+            
+            <button type="submit" class="btn">Create Account</button>
+        </form>
+        
+        <p class="or">Or</p>
+        <div class="social-login">
+            <div class="social-btn google-btn">
+                <img src="images/google_icon.png" alt="Google"> Google
+            </div>
+            <div class="social-btn facebook-btn">
+                <img src="images/facebook_icon.png" alt="Facebook"> Facebook
+            </div>
+        </div>
+    </div>
+</body>
+</html>

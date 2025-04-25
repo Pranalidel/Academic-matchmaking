@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MatchMaking - Smarter Careers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Overlock:wght@400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+    <style>
+        html, body {
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Overlock', sans-serif;
+            background: #E5F8FF; /* Updated background color */
+            background-attachment: fixed;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            background-color: #E5F8FF;
+        }
+        .header a {
+            text-decoration: none;
+            margin: 0 20px;
+            color: #0A2239;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .btn-signup {
+            background-color: #4CC5F6;
+            color: #fff !important;
+            padding: 8px 15px;
+            border-radius: 0px; /* Changed to rectangular edges */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .btn-signup:hover {
+        background-color: #7cd1f3; /* Change to any hover effect you prefer */
+        color: #fff; /* Keeps the text color white when hovered */
+        text-decoration: none;
+        }
+
+        .hero {
+            width: 100%;
+            height: 550px;
+            background-image: url('images/suki-pp.jpg');
+            background-size: cover;
+            background-position: center top -120px; /* Adjusted to show full head */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Moved content to the right */
+            padding-right: 50px;
+            position: relative; /* Needed for pseudo-elements */
+            clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%)   
+        }
+        .hero-content {
+            color: #fff;
+            text-align: right;
+            max-width: 700px;
+            margin-left: auto; /* Shift content to the right */
+            margin-right: 50px; /* Add spacing from the edge */
+            padding-right: 20px;
+        }
+        .hero-content h1 {
+            font-size: 70px;
+            font-weight: 900;
+        }
+        .hero-content p {
+            font-size: 18px;
+            margin-top: -50px;
+        }
+        .btn-group button {
+            padding: 20px 50px;
+            margin: 50px 5px;
+            border: none;
+            border-radius: 70px;
+            cursor: pointer;
+        }
+        .btn-student {
+            background-color: #11f1a7;
+            color: #000000;
+            font-weight: bold;
+            font-family: 'Overlock';
+            font-size: 20px;
+            padding: 20px 63px !important;
+            letter-spacing: 2px;
+        }
+        .btn-academics {
+            background-color: transparent;
+            color: #000;
+            font-weight: bold;
+            font-family: 'Overlock';
+            font-size: 20px;
+            border: 1px solid #000 !important; /* Add black border */
+            padding: 10px 20px; /* Optional: Adjust padding for better appearance */
+            border-radius: 5px; /* Optional: Add rounded corners */
+            letter-spacing: 2px;
+        }
+        .features {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .features h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+            margin-top: -10px;
+        }
+        .features p {
+            width: 80%;
+            margin: 0 auto 20px;
+            font-size: 16px;
+        }
+        .columns {
+            display: flex;
+            justify-content: space-around;
+            text-align: left;
+            margin-top: 30px;
+        }
+        .column {
+            width: 30%;
+        }
+        .column h3 {
+            font-weight: 900;
+        }
+        .footer {
+            padding: 20px;
+            background-color: #f1f1f1;
+            text-align: center;
+        }
+        .btn-group button:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+            transition: all 0.2s ease-in-out;
+        }
+                /* Styling for the dropdown container */
+        /* Styling for the dropdown container */
+        .dropdown {
+            position: relative; /* So that the dropdown content can be positioned relative to it */
+            display: inline-block; /* Ensure dropdown is inline with other items */
+        }
+
+        /* Dropdown content (hidden by default) */
+        .dropdown-content {
+            display: none; /* Hidden by default */
+            position: absolute;
+            background-color: #E5F8FF; /* Background color for dropdown */
+            min-width: 200px; /* Increase width to fit content in one line */
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); /* Slight shadow effect */
+            z-index: 1; /* Ensure it's above other elements */
+            left: 50%; /* Position dropdown in the center */
+            transform: translateX(-50%); /* Adjust to truly center the dropdown */
+        }
+
+        /* Show the dropdown content on hover */
+        .dropdown:hover .dropdown-content {
+            display: block; /* Display the dropdown content when hovering */
+        }
+
+        /* Style the dropdown links */
+        .dropdown-content a {
+            color: #0A2239; /* Same blue as your other links */
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center; /* Ensure text is centered inside the links */
+        }
+
+        /* Highlight the entire option on hover */
+        .dropdown-content a:hover {
+            background-color: #4CC5F6; /* Use the same blue as your main button */
+            color: #fff; /* Change text color to white */
+        }
+
+        /* Optional: Add hover effect for the dropdown button */
+        .btn-group button:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+            transition: all 0.2s ease-in-out;
+        }
+        .matchking {
+            font-family: 'Overlock', sans-serif;
+            font-weight: bold;
+            /* line-height: 0.9; Reduce gap between lines */
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .big {
+            font-size: 3rem; /* Large size for "MA" */
+            color: #0E1E38; /* Dark blue */
+        }
+
+        .orange {
+            color: #FF4A00; /* Orange color for "A" */
+            margin-left: -2px;
+        }
+
+        .small-group {
+            display: flex;
+            flex-direction: column; /* Stack "tch" and "king" vertically */
+            line-height: 0.96; /* Reduce space between lines */
+        }
+
+        .small {
+            font-size: 1.3rem; /* Smaller text for "tch" and "king" */
+            color: #0E1E38; /* Dark blue */
+            display: inline-block;
+        }
+        .matchking .small-group .small:first-child { /* Target "tch" */
+            margin-left: -1.3px;  /* Adjust this value to move it slightly left */
+            margin-bottom: -1px;
+        }
+        .features-content {
+            text-align: center;
+            padding: 5px 50px;
+            background-color: white; /* White background */
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for a clean look */
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .columns {
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+            gap: 20px;
+        }
+
+        .column {
+            width: 48%;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            background: #f9f9f9; /* Light background inside each box */
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease-in-out;
+        }
+        .column:hover {
+        transform: translateY(-5px); /* Lift effect on hover */
+        }
+
+        /* Titles */
+        .title {
+            color: #6B5B95;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .sub-title {
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Text Content */
+        .content-wrap {
+            flex-grow: 1;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #444;
+        }
+
+        /* Align "What can be done?" with lists */
+        .content-align {
+            margin-top: auto;
+            padding-top: 10px;
+        }
+
+        /* List Styling */
+        .styled-list {
+            list-style: none;
+            padding: 0;
+            font-size: 16px;
+        }
+
+        .styled-list li {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px 0;
+        }
+
+        .testimonials {
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .testimonials-heading {
+            font-size: 17px;
+            color: rgba(128, 128, 128, 0.692); /* Light Grey */
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            margin-bottom: -25px;
+        }   
+        .testimonials h2 {
+            font-size: 32px; /* Adjust the font size as needed */
+            font-family: 'Poppins', sans-serif; /* Change the font style */
+            color:  #333; /* You can set a custom color here */
+            font-weight: normal; /* Adjust font weight if needed */
+        }
+
+        .testimonial-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .testimonial {
+            background: #bee0eb;
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            }
+
+        .testimonial img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .testimonial img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: -70px;
+        }
+        .testimonials h4 {
+            font-size: 20px; /* Adjust the font size as needed */
+            font-family: 'Poppins', sans-serif; /* Change the font style */
+            color: rgba(59, 53, 53, 0.692); /* You can set a custom color here */
+            font-weight: normal; /* Adjust font weight if needed */
+            margin-top: 10px;
+        }
+        .testimonial p {
+            font-size: 13px; /* Adjust the font size as needed */
+            font-family: 'Poppins', sans-serif; /* Change the font style */
+            color: rgba(59, 53, 53, 0.692); /* You can set a custom color here */
+            font-weight: normal; /* Adjust font weight if needed */
+        }
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, #4CC5F6, #1e5f9c);
+            color: white;
+            padding: 60px 155px;
+            border-radius: 10px;
+            margin: 50px auto;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            background: black;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 30px;
+        }
+
+        .cta-button:hover {
+            background: #ffffff;
+            color: black;
+        }
+        .cta-section h4 {
+            color: rgba(59, 53, 53, 0.692);
+            letter-spacing: 1px;
+            margin-top: -10px;
+        }
+        .cta-section h2 {
+        margin-top: 50px; /* Optional: Adjust the spacing between the h4 and h2 */
+        font-size: 40px;
+        }   
+        .about-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #4CC5F6, #0091D5);
+            color: white;
+            border-radius: 20px;
+            margin-top: 50px;
+            max-width: 800px;
+            margin: 50px auto;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-section h3 {
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .social-logo {
+            width: 50px; /* Adjust size for better visibility */
+            height: 50px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: brightness(0) invert(1); /* Invert color for visibility on light background */
+        }
+
+        .social-logo:hover {
+            transform: scale(1.2);
+            filter: brightness(1.2);
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            color: white;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .contact-info p strong {
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 30px 15px;
+                margin-top: 20px;
+            }
+
+            .social-icons {
+                gap: 20px;
+            }
+
+            .social-logo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .contact-info p {
+                font-size: 16px;
+            }
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="matchking">
+            <span class="big">M</span><span class="big orange">A</span>
+            <div class="small-group">
+                <span class="small">tch</span>
+                <span class="small">king</span>
+            </div>
+        </div>
+        
+        <div>
+            <!-- Services with Dropdown -->
+            <div class="dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-content">
+                    <a href="#">Build CV</a>
+                    <a href="#">Career Development</a>
+                    <a href="#">Research Guide</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">Explore Plans</a>
+                <div class="dropdown-content">
+                    <a href="#">Develop Skills</a>
+                    <a href="#">Find Academics For Research</a>
+                    <a href="#">Find Students For Research</a>
+                </div>
+            </div>
+            <a href="#">Build Resume</a>
+            <a href="#">Login</a>
+            <a href="#" class="btn-signup">SIGN UP</a>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Smart <span style="color: #0A2239;">Matches</span> for<br> Smarter Careers</h1>
+            <p>Helping students and academics<br>connect, learn, and grow.</p>
+            <div class="btn-group">
+                <button class="btn-student">STUDENT</button>
+                <button class="btn-academics">ACADEMICS</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="features">
+        <h2>Boost your journey with the easiest and most innovative<br>feature-packed tools through MatchMaking</h2>
+        </div>
+    </div>
+
+    <div class="features-content">
+        <div class="columns">
+            <div class="column">
+                <h3 style="color: #6B5B95;">Students ></h3>
+                <div class="content-wrap">
+                    <p>Students can discover your ideal academic collaboration. Learn in-demand skills, work alongside experts on impactful research projects, and elevate your CV with practical achievements that showcase your potential.</p>
+                </div>
+                    <div class="content-aligned">
+                    <h4>What can be done?</h4>
+                    <ul>
+                        <li>Strengthen CV</li>
+                        <li>Develop Skills</li>
+                        <li>Find Research Topics</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column">
+                <h3 style="color: #6B5B95;">Academics</h3>
+                <div class="content-wrap">
+                    <p>Academics, expand your research possibilities by connecting with highly motivated students eager to contribute. Browse detailed profiles, assess their skills and interests, and handpick the perfect collaborator to bring fresh insights and added value to your projects—all in just a few clicks.</p>
+                </div>
+                    <div class="content-aligned">
+                    <h4>What can be done?</h4>
+                    <ul>
+                        <li>Strengthen CV</li>
+                        <li>Find Research Topics</li>
+                        <li>Look For Students For Research Help</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonials">
+        <h3 class="testimonials-heading">TESTIMONIALS</h3>
+            <h2>Read What Others<br>Have To Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial">
+                <img src="images/testimonial-face.jpg" alt="Olivia">
+                <h4>Olivia Cole</h4>
+                <p>"MatchMaking helped me find the perfect research team. A fantastic experience!"</p>
+            </div>
+            <div class="testimonial">
+                <img src="images/testimonial-face.jpg" alt="Chloe">
+                <h4>Chloe Ting</h4>
+                <p>"I found talented students for my project within days. Highly recommended!"</p>
+            </div>
+            <div class="testimonial">
+                <img src="images/testimonial-face.jpg" alt="Sophia">
+                <h4>Sophia Peachel</h4>
+                <p>"The best platform for research collaboration. It exceeded my expectations!"</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h4>ARE YOU READY?</h4>
+        <h2>Be A Part Of The<br>Next Big Thing</h2>
+        <button class="cta-button">START NOW</button>
+    </div>
+
+    <div class="about-section">
+        <h3>About Us</h3>
+        <div class="social-icons">
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="images/instagram-logo.png" alt="Instagram" class="social-logo">
+            </a>
+            <a href="https://www.facebook.com" target="_blank">
+                <img src="images/facebook-logo.png" alt="Facebook" class="social-logo">
+            </a>
+            <a href="https://www.linkedin.com" target="_blank">
+                <img src="images/linkedin-logo.png" alt="LinkedIn" class="social-logo">
+            </a>
+        </div>
+        <div class="contact-info">
+            <p><strong>Contact Number:</strong> +44 123 456 789</p>
+            <p><strong>Country:</strong> United Kingdom</p>
+        </div>
+    </div>
+    
+
+    <div class="footer">
+        &copy; <span id="year"></span> MatchMaking. All rights reserved.
+    </div>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
