@@ -49,7 +49,8 @@ def signin():
     return render_template('signin.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
 
 
 # Endpoint to add a new user
